@@ -1,0 +1,31 @@
+{
+    "name": "deviam/laravel-bancard",
+    "keywords": [
+        "laravel",
+        "bancard"
+    ],
+    "autoload": {
+        "psr-4": {
+            "Deviam\\Bancard\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Miguel Chavez",
+            "email": "miguelmchavez@hotmail.com",
+            "homepage": "https://github.com/miguelmchavez",
+            "role": "Developer"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Deviam\\Bancard\\BancardServiceProvider"
+            ]
+        }
+    },
+    "require": {
+        "php": ">=7.4", 
+        "illuminate/http": "^8.0"
+    }
+}
