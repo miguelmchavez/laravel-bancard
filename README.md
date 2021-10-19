@@ -7,7 +7,7 @@ Install via composer
 ```bash
 composer require deviam/laravel-bancard
 ```
-Publish config, migrations and views
+Publish config and migrations
 
 ```bash
 php artisan vendor:publish --provider="Deviam\Bancard\BancardServiceProvider"
@@ -97,7 +97,7 @@ $response = Bancard::singleBuy('Ejemplo de pago', 10330.00);
 if ($response->failed()) {
 	// Do something here.
 }
-$data = $response->json():
+$data = $response->json();
 $processId = $data['process_id'];
 $scriptUrl = Bancard::scriptUrl();
 
