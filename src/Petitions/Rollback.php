@@ -5,7 +5,7 @@ namespace Deviam\Bancard\Petitions;
 use Deviam\Bancard\Bancard;
 use Deviam\Bancard\Models\Rollback as RollbackModel;
 
-class Rollback implements Petition
+class Rollback extends Petition
 {
     private $payload;
 
@@ -33,13 +33,13 @@ class Rollback implements Petition
         ];
     }
 
-    public function handlePayload(array $confirmation): void
+    public function handlePayload(array $data = []): void
     {
-        $message = $confirmation['messages'][0] ?? [];
+        $message = $data['messages'][0] ?? [];
 
         RollbackModel::create([
             'shop_process_id' => $this->payload, 
-            'status' => $confirmation['status'], 
+            'status' => $data['status'], 
             'key' => $message['key'] ?? '-', 
             'level' => $message['level'] ?? '-', 
             'dsc' => $message['dsc'] ?? '-'

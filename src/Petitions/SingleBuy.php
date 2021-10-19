@@ -11,11 +11,12 @@ class SingleBuy extends Petition
 
     public function __construct(string $description, float $amount)
     {
-        $this->payload = SingleBuyModel::create([
+        $payload = SingleBuyModel::create([
             'description' => $description, 
             'amount' => $amount, 
             'currency' => 'PYG'
         ]);
+        $this->payload = SingleBuyModel::find($payload->id);
     }
 
     protected function token(): string
@@ -43,8 +44,8 @@ class SingleBuy extends Petition
         ];
     }
 
-    public function handlePayload(array $body): void
+    public function handlePayload(array $data = []): void
     {
-        $this->payload->update($body);
+        $this->payload->update($data);
     }
 }

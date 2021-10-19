@@ -5,7 +5,7 @@ namespace Deviam\Bancard\Petitions;
 use Deviam\Bancard\Bancard;
 use Deviam\Bancard\Models\Card as CardModel;
 
-class ListCards implements Petition
+class ListCards extends Petition
 {
     private $payload;
 
@@ -32,9 +32,9 @@ class ListCards implements Petition
         ];
     }
 
-    public function handlePayload(array $body): void
+    public function handlePayload(array $data = []): void
     {
-        foreach ($body['cards'] as $card) {
+        foreach ($data['cards'] as $card) {
             $card['active'] = true;
 
             CardModel::withoutGlobalScopes()

@@ -5,17 +5,18 @@ namespace Deviam\Bancard\Petitions;
 use Deviam\Bancard\Bancard;
 use Deviam\Bancard\Models\Card;
 
-class NewCard implements Petition
+class NewCard extends Petition
 {
     private Card $payload;
 
     public function __construct(int $userId, string $userCellPhone, string $userMail)
     {
-        $this->payload = Card::create([
+        $payload = Card::create([
             'user_id' => $userId, 
             'user_cell_phone' => $userCellPhone, 
             'user_mail' => $userMail
         ]);
+        $this->payload = Card::withoutGlobalScopes()->find($payload->id);
     }
 
     protected function token(): string

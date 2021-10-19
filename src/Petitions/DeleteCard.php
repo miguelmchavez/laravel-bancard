@@ -5,7 +5,7 @@ namespace Deviam\Bancard\Petitions;
 use Deviam\Bancard\Bancard;
 use Deviam\Bancard\Models\Card;
 
-class DeleteCard implements Petition
+class DeleteCard extends Petition
 {
     private $payload;
 

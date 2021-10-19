@@ -8,5 +8,8 @@ abstract class Petition
 
     abstract public function getOperationPetition(): array;
 
-    abstract public function handlePayload(array $data = []): void;
+    public function handlePayload(array $data = []): void
+    {
+        //
+    }
 }

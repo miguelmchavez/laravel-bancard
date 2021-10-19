@@ -5,7 +5,7 @@ namespace Deviam\Bancard\Petitions;
 use Deviam\Bancard\Bancard;
 use Deviam\Bancard\Models\Confirmation as ConfirmationModel;
 
-class Confirmation implements Petition
+class Confirmation extends Petition
 {
     private $payload;
 
@@ -31,11 +31,11 @@ class Confirmation implements Petition
         ];
     }
 
-    public function handlePayload(array $confirmation): void
+    public function handlePayload(array $data = []): void
     {
-        $securityInformation = $confirmation['security_information'];
-        unset($confirmation['security_information']);
-        $confirmation = array_merge($confirmation, $securityInformation);
+        $securityInformation = $data['security_information'];
+        unset($data['security_information']);
+        $confirmation = array_merge($data, $securityInformation);
 
         ConfirmationModel::create($confirmation);
     }

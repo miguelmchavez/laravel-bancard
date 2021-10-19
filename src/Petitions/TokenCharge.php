@@ -5,18 +5,19 @@ namespace Deviam\Bancard\Petitions;
 use Deviam\Bancard\Bancard;
 use Deviam\Bancard\Models\{SingleBuy as SingleBuyModel, Confirmation as ConfirmationModel};
 
-class TokenCharge implements Petition
+class TokenCharge extends Petition
 {
     private SingleBuyModel $payload;
     private string $aliasToken;
 
     public function __construct(string $description, float $amount, string $aliasToken)
     {
-        $this->payload = SingleBuyModel::create([
+        $payload = SingleBuyModel::create([
             'description' => $description, 
             'amount' => $amount, 
             'currency' => 'PYG'
         ]);
+        $this->payload = SingleBuyModel::find($payload->id);
         $this->aliasToken = $aliasToken;
     }
 
@@ -45,11 +46,11 @@ class TokenCharge implements Petition
         ];
     }
 
-    public function handlePayload(array $confirmation): void
+    public function handlePayload(array $data = []): void
     {
-        $securityInformation = $confirmation['security_information'];
-        unset($confirmation['security_information']);
-        $confirmation = array_merge($confirmation, $securityInformation);
+        $securityInformation = $data['security_information'];
+        unset($data['security_information']);
+        $confirmation = array_merge($data, $securityInformation);
 
         ConfirmationModel::create($confirmation);
     }
