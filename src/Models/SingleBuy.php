@@ -25,6 +25,7 @@ class SingleBuy extends Model
     ];
 
     protected $casts = [
+        'id' => 'string',
         'zimple' => 'boolean',
     ];
 

@@ -26,6 +26,7 @@ class Card extends Model
     ];
 
     protected $casts = [
+        'id' => 'string',
         'active' => 'boolean',
     ];
 

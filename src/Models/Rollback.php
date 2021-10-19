@@ -21,6 +21,10 @@ class Rollback extends Model
         'dsc'
     ];
 
+    protected $casts = [
+        'id' => 'string',
+    ];
+
     protected static function booted()
     {
         static::creating(function ($rollback) {

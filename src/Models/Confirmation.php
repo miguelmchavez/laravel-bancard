@@ -29,6 +29,10 @@ class Confirmation extends Model
         'risk_index'
     ];
 
+    protected $casts = [
+        'id' => 'string',
+    ];
+
     public function getSourceAttribute()
     {
         return $this->card_source === 'L' ? 'Local' : 'Internacional';
