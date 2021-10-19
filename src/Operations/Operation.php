@@ -2,6 +2,7 @@
 
 namespace Deviam\Bancard\Operations;
 
+use Deviam\Bancard\Bancard;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Client\RequestException;
@@ -42,7 +43,7 @@ abstract class Operation
     protected static function getEndpoint(): string
     {
         $baseUrl = Bancard::baseUrl();
-        $resource = self::getResource();
+        $resource = static::getResource();
 
         return "{$baseUrl}/{$resource}";
     }
