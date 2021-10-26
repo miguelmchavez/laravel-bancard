@@ -2,8 +2,7 @@
 
 namespace Deviam\Bancard;
 
-use Illuminate\Filesystem\Filesystem;
-use Illuminate\Support\{Collection, ServiceProvider};
+use Illuminate\Support\ServiceProvider;
 
 class BancardServiceProvider extends ServiceProvider
 {
