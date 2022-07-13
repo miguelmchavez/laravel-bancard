@@ -18,6 +18,8 @@ class Confirmation extends Petition
     {
         $privateKey = Bancard::privateKey();
         $token = "{$privateKey}{$this->payload}get_confirmation";
+
+        return hash('md5', $token);
     }
 
     public function getOperationPetition(): array
